@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerAI - Discover Your Perfect Career Path</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-compass"></i> CareerAI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-12 text-center" data-aos="fade-up">
+                    <h1 class="display-3 fw-bold mb-4">Discover Your Perfect Career Path</h1>
+                    <p class="lead mb-5">AI-powered career predictions tailored to your skills, education, and aspirations</p>
+                    <button class="btn btn-primary btn-lg" onclick="scrollToForm()">
+                        Get Started <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">How It Works</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center">
+                        <div class="feature-icon">
+                            <i class="bi bi-pencil-square"></i>
+                        </div>
+                        <h4>Fill Your Profile</h4>
+                        <p>Share your education, skills, and career preferences</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center">
+                        <div class="feature-icon">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <h4>AI Analysis</h4>
+                        <p>Our AI analyzes your profile against industry data</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-center">
+                        <div class="feature-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h4>Get Roadmap</h4>
+                        <p>Receive personalized career predictions and learning paths</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section id="form-section" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-lg" data-aos="fade-up">
+                        <div class="card-body p-5">
+                            <!-- Auto-save indicator -->
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <small class="text-muted">
+                                        <i class="bi bi-cloud-check text-success"></i> Auto-save enabled
+                                    </small>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-outline-danger" onclick="clearSavedData(); resetForm();">
+                                    <i class="bi bi-trash"></i> Clear Saved Data
+                                </button>
+                            </div>
+                            
+                            <!-- Progress Bar -->
+                            <div class="progress mb-4" style="height: 8px;">
+                                <div id="progressBar" class="progress-bar" role="progressbar" style="width: 16.67%"></div>
+                            </div>
+                            
+                            <!-- Form -->
+                            <form id="careerForm" novalidate>
+                                <!-- Step 1: Personal Info -->
+                                <div class="form-step active" id="step1">
+                                    <h3 class="mb-4"><i class="bi bi-person"></i> Personal Information</h3>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Age *</label>
+                                            <input type="number" class="form-control" name="age" min="18" max="60" placeholder="25" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Gender *</label>
+                                            <select class="form-select" name="gender" required>
+                                                <option value="">Select</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Location *</label>
+                                            <select class="form-select" name="location" required>
+                                                <option value="">Select City</option>
+                                                <option value="Bangalore">Bangalore</option>
+                                                <option value="Mumbai">Mumbai</option>
+                                                <option value="Delhi">Delhi</option>
+                                                <option value="Hyderabad">Hyderabad</option>
+                                                <option value="Pune">Pune</option>
+                                                <option value="Chennai">Chennai</option>
+                                                <option value="Kolkata">Kolkata</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Languages Spoken *</label>
+                                            <input type="text" class="form-control" name="languages_spoken" placeholder="English, Hindi" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2: Education -->
+                                <div class="form-step" id="step2">
+                                    <h3 class="mb-4"><i class="bi bi-mortarboard"></i> Education</h3>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Class 10 Percentage *</label>
+                                            <input type="number" class="form-control" name="class_10_percentage" min="0" max="100" step="0.1" placeholder="85" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Class 12 Percentage *</label>
+                                            <input type="number" class="form-control" name="class_12_percentage" min="0" max="100" step="0.1" placeholder="80" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Class 12 Stream *</label>
+                                            <select class="form-select" name="class_12_stream" required>
+                                                <option value="">Select</option>
+                                                <option value="Science">Science</option>
+                                                <option value="Commerce">Commerce</option>
+                                                <option value="Arts">Arts</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Graduate Major *</label>
+                                            <select class="form-select" name="graduate_major" required>
+                                                <option value="">Select</option>
+                                                <option value="BTech CSE">BTech CSE</option>
+                                                <option value="BCA">BCA</option>
+                                                <option value="BSc">BSc</option>
+                                                <option value="BCom">BCom</option>
+                                                <option value="BBA">BBA</option>
+                                                <option value="BA English">BA English</option>
+                                                <option value="BTech Mechanical">BTech Mechanical</option>
+                                                <option value="BSc Math">BSc Math</option>
+                                                <option value="BSc Physics">BSc Physics</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Graduate CGPA *</label>
+                                            <input type="number" class="form-control" name="graduate_cgpa" min="0" max="10" step="0.1" placeholder="7.5" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">PG Major</label>
+                                            <select class="form-select" name="pg_major">
+                                                <option value="None" selected>None</option>
+                                                <option value="MTech">MTech</option>
+                                                <option value="MCA">MCA</option>
+                                                <option value="MBA">MBA</option>
+                                                <option value="MSc">MSc</option>
+                                                <option value="MCom">MCom</option>
+                                                <option value="MA">MA</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">PG CGPA (if applicable)</label>
+                                            <input type="number" class="form-control" name="pg_cgpa" min="0" max="10" step="0.1" value="0" placeholder="0">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Highest Education *</label>
+                                            <select class="form-select" name="highest_education" required>
+                                                <option value="">Select</option>
+                                                <option value="BTech">BTech</option>
+                                                <option value="BSc">BSc</option>
+                                                <option value="BCom">BCom</option>
+                                                <option value="BCA">BCA</option>
+                                                <option value="BBA">BBA</option>
+                                                <option value="BA">BA</option>
+                                                <option value="MTech">MTech</option>
+                                                <option value="MCA">MCA</option>
+                                                <option value="MBA">MBA</option>
+                                                <option value="MSc">MSc</option>
+                                                <option value="MA">MA</option>
+                                                <option value="PhD">PhD</option>
+                                                <option value="Diploma">Diploma</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3: Skills -->
+                                <div class="form-step" id="step3">
+                                    <h3 class="mb-4"><i class="bi bi-gear"></i> Skills</h3>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label class="form-label">Technical Skills *</label>
+                                            <input type="text" class="form-control" name="technical_skills" placeholder="Python, JavaScript, React" required>
+                                            <small class="text-muted">Comma-separated values</small>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Soft Skills *</label>
+                                            <input type="text" class="form-control" name="soft_skills" placeholder="Communication, Teamwork, Leadership" required>
+                                            <small class="text-muted">Comma-separated values</small>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Technical Skill Proficiency: <span id="techSkillVal">0.5</span></label>
+                                            <input type="range" class="form-range" name="tech_skill_proficiency" min="0" max="1" step="0.1" value="0.5" oninput="updateValue('techSkillVal', this.value)">
+                                            <div class="d-flex justify-content-between">
+                                                <small>Beginner</small>
+                                                <small>Expert</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Soft Skill Proficiency: <span id="softSkillVal">0.5</span></label>
+                                            <input type="range" class="form-range" name="soft_skill_proficiency" min="0" max="1" step="0.1" value="0.5" oninput="updateValue('softSkillVal', this.value)">
+                                            <div class="d-flex justify-content-between">
+                                                <small>Beginner</small>
+                                                <small>Expert</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 4: Experience -->
+                                <div class="form-step" id="step4">
+                                    <h3 class="mb-4"><i class="bi bi-briefcase"></i> Experience</h3>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Courses Completed *</label>
+                                            <input type="number" class="form-control" name="courses_completed" min="0" placeholder="10" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Avg Course Difficulty: <span id="courseDiffVal">3</span></label>
+                                            <input type="range" class="form-range" name="avg_course_difficulty" min="1" max="5" step="0.5" value="3" oninput="updateValue('courseDiffVal', this.value)">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Total Hours Learning *</label>
+                                            <input type="number" class="form-control" name="total_hours_learning" min="0" placeholder="200" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Project Count *</label>
+                                            <input type="number" class="form-control" name="project_count" min="0" placeholder="5" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Avg Project Complexity: <span id="projectComplexVal">3</span></label>
+                                            <input type="range" class="form-range" name="avg_project_complexity" min="1" max="5" step="0.5" value="3" oninput="updateValue('projectComplexVal', this.value)">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Experience (Months) *</label>
+                                            <input type="number" class="form-control" name="experience_months" min="0" placeholder="12" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Experience Type *</label>
+                                            <select class="form-select" name="experience_types" required>
+                                                <option value="">Select</option>
+                                                <option value="Internship">Internship</option>
+                                                <option value="Full-time">Full-time</option>
+                                                <option value="Part-time">Part-time</option>
+                                                <option value="Freelance">Freelance</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Job Level *</label>
+                                            <select class="form-select" name="job_level" required>
+                                                <option value="">Select</option>
+                                                <option value="Entry Level">Entry Level</option>
+                                                <option value="Mid Level">Mid Level</option>
+                                                <option value="Senior Level">Senior Level</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Current Status *</label>
+                                            <select class="form-select" name="current_status" required>
+                                                <option value="">Select</option>
+                                                <option value="Student">Student</option>
+                                                <option value="Working Professional">Working Professional</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 5: Interests -->
+                                <div class="form-step" id="step5">
+                                    <h3 class="mb-4"><i class="bi bi-star"></i> Interests & Preferences</h3>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Interest: STEM <span id="stemVal">0.5</span></label>
+                                            <input type="range" class="form-range" name="interest_stem" min="0" max="1" step="0.1" value="0.5" oninput="updateValue('stemVal', this.value)">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Interest: Business <span id="businessVal">0.5</span></label>
+                                            <input type="range" class="form-range" name="interest_business" min="0" max="1" step="0.1" value="0.5" oninput="updateValue('businessVal', this.value)">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Interest: Arts <span id="artsVal">0.5</span></label>
+                                            <input type="range" class="form-range" name="interest_arts" min="0" max="1" step="0.1" value="0.5" oninput="updateValue('artsVal', this.value)">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Interest: Design <span id="designVal">0.5</span></label>
+                                            <input type="range" class="form-range" name="interest_design" min="0" max="1" step="0.1" value="0.5" oninput="updateValue('designVal', this.value)">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Interest: Medical <span id="medicalVal">0.5</span></label>
+                                            <input type="range" class="form-range" name="interest_medical" min="0" max="1" step="0.1" value="0.5" oninput="updateValue('medicalVal', this.value)">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Interest: Social Science <span id="socialVal">0.5</span></label>
+                                            <input type="range" class="form-range" name="interest_social_science" min="0" max="1" step="0.1" value="0.5" oninput="updateValue('socialVal', this.value)">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Career Preference *</label>
+                                            <select class="form-select" name="career_preference" required>
+                                                <option value="">Select</option>
+                                                <option value="Technical">Technical</option>
+                                                <option value="Business">Business</option>
+                                                <option value="Creative">Creative</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Work Preference *</label>
+                                            <select class="form-select" name="work_preference" required>
+                                                <option value="">Select</option>
+                                                <option value="Remote">Remote</option>
+                                                <option value="Hybrid">Hybrid</option>
+                                                <option value="Office">Office</option>
+                                                <option value="Flexible">Flexible</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Preferred Industries *</label>
+                                            <input type="text" class="form-control" name="preferred_industries" placeholder="Technology, Finance, Healthcare" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Preferred Role *</label>
+                                            <select class="form-select" name="preferred_roles" required>
+                                                <option value="">Select</option>
+                                                <option value="Software Engineer">Software Engineer</option>
+                                                <option value="Frontend Developer">Frontend Developer</option>
+                                                <option value="Backend Developer">Backend Developer</option>
+                                                <option value="AI Engineer">AI Engineer</option>
+                                                <option value="Data Analyst">Data Analyst</option>
+                                                <option value="Data Scientist">Data Scientist</option>
+                                                <option value="Project Manager">Project Manager</option>
+                                                <option value="Designer">Designer</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 6: Personality -->
+                                <div class="form-step" id="step6">
+                                    <h3 class="mb-4"><i class="bi bi-emoji-smile"></i> Personality Traits</h3>
+                                    <p class="text-muted mb-4">Rate yourself on the Big Five personality traits (1-5)</p>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Conscientiousness: <span id="conscVal">3</span></label>
+                                            <input type="range" class="form-range" name="conscientiousness" min="1" max="5" step="1" value="3" oninput="updateValue('conscVal', this.value)">
+                                            <small class="text-muted">Organization, responsibility, reliability</small>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Extraversion: <span id="extraVal">3</span></label>
+                                            <input type="range" class="form-range" name="extraversion" min="1" max="5" step="1" value="3" oninput="updateValue('extraVal', this.value)">
+                                            <small class="text-muted">Sociability, energy, assertiveness</small>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Openness: <span id="openVal">3</span></label>
+                                            <input type="range" class="form-range" name="openness" min="1" max="5" step="1" value="3" oninput="updateValue('openVal', this.value)">
+                                            <small class="text-muted">Curiosity, creativity, imagination</small>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Agreeableness: <span id="agreeVal">3</span></label>
+                                            <input type="range" class="form-range" name="agreeableness" min="1" max="5" step="1" value="3" oninput="updateValue('agreeVal', this.value)">
+                                            <small class="text-muted">Compassion, cooperation, trust</small>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Emotional Stability: <span id="emotVal">3</span></label>
+                                            <input type="range" class="form-range" name="emotional_stability" min="1" max="5" step="1" value="3" oninput="updateValue('emotVal', this.value)">
+                                            <small class="text-muted">Calmness, resilience, stress management</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button type="button" class="btn btn-secondary" id="prevBtn" onclick="changeStep(-1)">
+                                        <i class="bi bi-arrow-left"></i> Previous
+                                    </button>
+                                    <button type="button" class="btn btn-primary" id="nextBtn" onclick="changeStep(1)">
+                                        Next <i class="bi bi-arrow-right"></i>
+                                    </button>
+                                    <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
+                                        <i class="bi bi-send"></i> Get Prediction
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="text-center py-5" style="display: none;">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-3">Analyzing your profile...</p>
+    </div>
+
+    <!-- Results Section -->
+    <section id="results-section" class="py-5 bg-light" style="display: none;">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Your Career Analysis</h2>
+            
+            <!-- Summary Card -->
+            <div class="row mb-4">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="card shadow">
+                        <div class="card-body p-4">
+                            <h3 class="card-title mb-4"><i class="bi bi-bullseye"></i> Career Prediction</h3>
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h2 class="text-primary mb-3" id="predictedRole">-</h2>
+                                    <div class="mb-3">
+                                        <strong>Confidence:</strong>
+                                        <div class="progress mt-2" style="height: 25px;">
+                                            <div id="confidenceBar" class="progress-bar bg-success" style="width: 0%">0%</div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <strong>Readiness:</strong> <span id="readiness" class="badge bg-info">-</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="alert alert-warning mb-0">
+                                        <strong><i class="bi bi-lightbulb"></i> Top Priority:</strong>
+                                        <p class="mb-0 mt-2" id="topPriority">-</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strengths and Skills Grid -->
+            <div class="row g-4 mb-4">
+                <!-- Your Strengths -->
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="card shadow h-100">
+                        <div class="card-body">
+                            <h4 class="card-title mb-3"><i class="bi bi-award"></i> Your Strengths</h4>
+                            <div id="strengthsList"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Gaps -->
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="card shadow h-100">
+                        <div class="card-body">
+                            <h4 class="card-title mb-3"><i class="bi bi-exclamation-triangle"></i> Skill Gaps</h4>
+                            <div id="skillGapsList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Roadmap -->
+            <div class="row mb-4">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4"><i class="bi bi-map"></i> Learning Roadmap</h4>
+                            <div class="accordion" id="roadmapAccordion"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alternative Careers -->
+            <div class="row">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4"><i class="bi bi-signpost"></i> Alternative Career Paths</h4>
+                            <div class="row g-3" id="alternativeCareers"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restart Button -->
+            <div class="text-center mt-4">
+                <button class="btn btn-outline-primary btn-lg" onclick="resetForm()">
+                    <i class="bi bi-arrow-clockwise"></i> Start New Analysis
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <h2 class="mb-4">About CareerAI</h2>
+                    <p class="lead">CareerAI uses advanced machine learning algorithms to analyze your profile and provide personalized career predictions. Our AI considers your education, skills, experience, interests, and personality traits to recommend the best career path for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 CareerAI. Powered by AI for better career decisions.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="errorToast" class="toast align-items-center text-white bg-danger border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMessage">Error message here</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
