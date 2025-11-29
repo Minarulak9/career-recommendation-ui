@@ -15,7 +15,7 @@ This document provides a **complete, production-ready prompt specification** for
 **Base URL:**
 
 ```
-https://web-production-3f4dc.up.railway.app
+http://127.0.0.1:8000
 ```
 
 All requests must be sent as:

@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = 'https://web-production-3f4dc.up.railway.app';
+const API_BASE_URL = 'http://127.0.0.1:8000';
 const STORAGE_KEY = 'careerAI_formData';
 
 // Initialize AOS

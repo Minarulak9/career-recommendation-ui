@@ -1,6 +1,6 @@
 # Frontend Integration Guide — Career Prediction Dashboard
 
-> **Base API URL:** [https://web-production-3f4dc.up.railway.app](https://web-production-3f4dc.up.railway.app)
+> **Base API URL:** [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 This document describes everything a frontend developer needs to build a **clean, professional, responsive dashboard** (HTML/CSS/JS) that integrates with the backend API. The UI design target is **Dashboard SaaS style** (clean admin panel look). Theme supports **Auto (light/dark switch)**.
 
@@ -66,7 +66,7 @@ Use `fetch` or Axios. All endpoints use POST where appropriate.
 
 ### 1) POST `/predict`
 
-**URL:** `https://web-production-3f4dc.up.railway.app/predict`
+**URL:** `http://127.0.0.1:8000/predict`
 **Body:** JSON user profile (example later)
 **Response:**
 
@@ -81,18 +81,18 @@ Use `fetch` or Axios. All endpoints use POST where appropriate.
 
 ### 2) POST `/explain`
 
-**URL:** `https://web-production-3f4dc.up.railway.app/explain`
+**URL:** `http://127.0.0.1:8000/explain`
 **Body:** same profile JSON
 **Response:** full explanation JSON with `learning_path`, `skill_gaps`, `skills_detected`, `alternative_roles` (as in current server output).
 
 ### 3) GET `/roles`
 
-**URL:** `https://web-production-3f4dc.up.railway.app/roles`
+**URL:** `http://127.0.0.1:8000/roles`
 Returns list of roles.
 
 ### 4) GET `/learning-path/{skill}`
 
-**URL:** `https://web-production-3f4dc.up.railway.app/learning-path/html`
+**URL:** `http://127.0.0.1:8000/learning-path/html`
 Returns resource entry for the skill.
 
 > All responses are JSON. Handle HTTP errors (4xx/5xx) gracefully and show user-friendly messages.
@@ -240,7 +240,7 @@ Accessibility: charts must have alt text or textual summary under charts.
 
 ```js
 async function callPredict(profile){
-  const res = await fetch('https://web-production-3f4dc.up.railway.app/predict',{
+  const res = await fetch('http://127.0.0.1:8000/predict',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body: JSON.stringify(profile)
@@ -294,7 +294,7 @@ Acceptance: send ZIP with `index.html`, `styles.css`, `app.js`, `assets/`, and `
 
 ## 17. Contact & notes for developer
 
-* API base URL: `https://web-production-3f4dc.up.railway.app`
+* API base URL: `http://127.0.0.1:8000`
 * If CORS issues appear, either run the frontend on a small local server (e.g., `npx http-server`) or request backend to allow the origin.
 * Keep UI minimal and professional; avoid decorative animations.
 
