@@ -244,7 +244,7 @@ function hideLoading() {
 }
 
 async function callPredictAPI(data) {
-    const API_BASE_URL = 'http://127.0.0.1:8000';
+    const API_BASE_URL = 'https://web-production-3f4dc.up.railway.app';
     
     try {
         showLoading('Predicting your career path...');
@@ -275,7 +275,7 @@ async function callPredictAPI(data) {
 }
 
 async function callExplainAPI(data) {
-    const API_BASE_URL = 'http://127.0.0.1:8000';
+    const API_BASE_URL = 'https://web-production-3f4dc.up.railway.app';
     
     try {
         showLoading('Analyzing your profile...');
